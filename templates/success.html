@@ -1,0 +1,11 @@
+{% extends "admin.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+
+<div class="container">
+  <h1>Congratulations, your submission was successful!</h1>
+  <p>{{ message }}</p>
+  <!-- You can customize the success message based on the context -->
+  <a href="{{ url_for('adddrivers') }}">Go back</a>
+</div>
+{% endblock %}

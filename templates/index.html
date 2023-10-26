@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block content %}
+<div class="row mt-5"><div class="col-lg-3 col-md-6 mb-4">
+  <div class="card">
+    <img
+      src="/static/driver_list.jpg"
+      class="card-img-top"
+      alt="courselist"
+    />
+    <div class="card-body">
+      <p class="card-text">Explore Driver Profiles and Runs.</p>
+      <a
+        href="{{ url_for('listdrivers') }}"
+        class="btn btn-warning"
+        >Check Now</a
+      >
+    </div>
+  </div>
+</div>
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+      <img
+        src="/static/course.jpg"
+        class="card-img-top"
+        alt="courselist"
+      />
+      <div class="card-body">
+        <p class="card-text">Discover our Exciting Courses.</p>
+        <a
+          href="{{ url_for('listcourses') }}"
+          class="btn btn-warning"
+          >Check Now</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+      <img
+        src="/static/results.jpg"
+        class="card-img-top"
+        alt="results"
+      />
+      <div class="card-body">
+        <p class="card-text">Explore our performances.</p>
+        <a
+          href="{{ url_for('overallresults') }}"
+          class="btn btn-warning"
+          >Check Now</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+      <img
+        src="/static/graph.jpg"
+        class="card-img-top"
+        alt="graph"
+      />
+      <div class="card-body">
+        <p class="card-text">Check the Top 5 Graph.</p>
+        <a
+          href="{{ url_for('showgraph') }}"
+          class="btn btn-warning"
+          >Check Now</a
+        >
+      </div>
+    </div>
+  </div>
+</div></div>
+
+
+{% endblock %}

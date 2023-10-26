@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+<nav
+  aria-label="breadcrumb"
+  class="mt-5"
+>
+  <ol class="breadcrumb link-secondary">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/listdrivers">Drivers</a></li>
+    <li
+      class="breadcrumb-item active"
+      aria-current="page"
+    >
+      Driver Run Details
+    </li>
+  </ol>
+</nav>
+<form
+  action="/listdrivers/rundetails?"
+  method="get"
+  class="d-flex mb-4"
+>
+  <select
+    name="driver_id"
+    class="me-2 form-select w-25"
+  >
+    <option
+      class="form-select form-select-lg"
+      aria-label="Small select example"
+    >
+      Select a driver
+    </option>
+    {% for driver in driver_list %}
+    <option value="{{ driver[0] }}">{{ driver[2] }} {{ driver[1] }}</option>
+    {% endfor %}
+  </select>
+  <input
+    type="submit"
+    value="Get Driver Run Details"
+    class="btn btn-warning"
+  />
+</form>
+<h2 class="mb-4">Driver Run Details</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-borderless table-hover p-4">
+    <tr class="table-dark">
+      <td class="p-4">Driver</td>
+      <td class="p-4">Name</td>
+      <td class="p-4">Car Model</td>
+      <td class="p-4">Drive Class</td>
+      <td class="p-4">Run Number</td>
+      <td class="p-4">Seconds</td>
+      <td class="p-4">Cones</td>
+      <td class="p-4">WD</td>
+      <td class="p-4">Course Name</td>
+      <td class="p-4">Run Total</td>
+    </tr>
+    {% for run in driver_run_detail %} {% set seconds = run[5] or 0 %} {% set
+    cones = run[6] or 0 %} {% set wd = run[7] or 0 %} {% set runTotal = seconds
+    + cones * 5 + wd * 10 %}
+    <tr class="table">
+      {% for details in run %}
+      <td class="p-4">{{ details }}</td>
+      {% endfor %}
+      <td class="p-4">
+        {% if runTotal == 0 %} WD {% else %} {{ runTotal }} {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

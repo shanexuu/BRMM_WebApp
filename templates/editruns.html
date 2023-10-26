@@ -1,0 +1,117 @@
+{% extends "admin.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+<nav
+  aria-label="breadcrumb"
+  class="mt-5 text-end"
+>
+  <ol class="breadcrumb link-secondary">
+    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+
+    <li
+      class="breadcrumb-item active"
+      aria-current="page"
+    >
+      Edit Runs
+    </li>
+  </ol>
+</nav>
+<h2 class="mb-4">Edit Runs</h2>
+<div class="mt-5 me-4">
+  <form
+    action="/admin/editruns"
+    method="post"
+    class="row g-3 needs-validation"
+  >
+    <div class="col-md-4">
+      <select
+        name="dr_id"
+        class="form-select"
+        id="validationTooltip04"
+        required
+      >
+        <option>Select a Driver ID</option>
+        {% for driver in driver_id_list %}
+        <option value="{{ driver[0] }}">{{ driver[0] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select
+        name="crs_id"
+        class="form-select"
+        required
+      >
+        <option selected>Select a Course ID</option>
+        {% for course in course_id_list %}
+        <option value="{{ course[0] }}">{{ course[0] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select
+        name="run_num"
+        class="form-select"
+        required
+      >
+        <option selected>Select a Run Number</option>
+        {% for run in run_num_list %}
+        <option value="{{ run[0] }}">{{ run[0] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input
+        name="seconds"
+        type="text"
+        class="form-control col-md-3"
+        placeholder="Enter Seconds"
+        aria-label="seconds"
+        step="0.01"
+        type="number"
+        pattern="^\d+(\.\d{1,2})?$"
+        id="validationCustom01"
+        required
+      />
+      <div class="invalid-feedback">Please enter a valid value.</div>
+    </div>
+    <div class="col-md-4">
+      <input
+        name="cones"
+        type="text"
+        class="form-control col-md-3"
+        placeholder="Enter Cones"
+        aria-label="cones"
+        step="1"
+        pattern="\d+"
+        id="validationCustom01"
+        required
+      />
+      <div class="invalid-feedback">Please enter a valid value.</div>
+    </div>
+    <div class="col-md-4">
+      <input
+        name="wd"
+        type="text"
+        class="form-control col-md-3"
+        placeholder="Enter WD"
+        aria-label="wd"
+        step="1"
+        pattern="\d+"
+        id="validationCustom01"
+        required
+      />
+      <div class="invalid-feedback">Please enter a valid value.</div>
+    </div>
+
+    <div class="col-12">
+      <input
+        type="submit"
+        value="Update"
+        class="btn btn-primary"
+      />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

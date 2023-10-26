@@ -1,32 +1,114 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>{% block title %}{% endblock %}</title>
-        <!-- Bootstrap CSS link -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,800;1,400;1,500;1,600;1,800&family=Urbanist:wght@900&display=swap" rel="stylesheet">
+  </head>
 
-    <body>
-      <nav>
-            <h1>Bankside Rakaia Motorkhana Mavens - Competition event</h1>
-            <ul>
-                <li><a href="{{ url_for('listdrivers') }}">List Drivers</a></li>
-                <li><a href="{{ url_for('listcourses') }}">List Courses</a></li>
-            </ul>
-          </nav>
-          <section class="content">
-            <header>
-              {% block header %}{% endblock %}
-            </header>
-            {% for message in get_flashed_messages() %}
-              <div class="flash">{{ message }}</div>
-            {% endfor %}
-            {% block content %}{% endblock %}
-          </section>
+  <body
+    class="bg-body-secondary"
+    style="font-family: 'Montserrat', sans-serif"
+  >
+   
+      <div class="has-bg-img">
+        
+        <div class="bg-img" style="background-image: url(/static/banner.jpg); background-repeat: no-repeat; background-size: cover; height: 40vh; max-width: 100vw;">
+        <div class="d-flex justify-content-end">
+           <a class="btn btn-outline-light float-right m-4" href="{{ url_for('dashboard') }}">Admin</a>         
+        </div>
 
-        <!-- Bootstrap's JavaScript bundle including Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
+        <h1 class="text-center text-warning mt-3 text-uppercase" style="font-family: 'Urbanist', sans-serif;">
+          Bankside Rakaia Motorkhana Mavens
+        </h1>
+        <p class="text-center text-warning fs-3 mt-3 text-uppercase fw-bold" style="font-family: 'Montserrat', sans-serif;">
+          Competition event
+        </p>
+      
+    </div>
+    <div class="navbar bg-dark navbar-expand-lg fw-semibold" data-bs-theme="dark">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+        id="navbarNav"><ul class="navbar-nav">
+      
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="{{ url_for('home') }}"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="{{ url_for('listdrivers') }}"
+              >Drivers</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="{{ url_for('listcourses') }}"
+              >Courses</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="{{ url_for('overallresults') }}"
+              >Results</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="{{ url_for('showgraph') }}"
+              >Graph</a
+            >
+          </li>
+          
+        </ul></div>
+        </div>
+    </div> 
+    
+    <section class="content container">
+      <header>{% block header %}{% endblock %}</header>
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %} {% block content %}{% endblock %}
+    </section>
 
+    <!-- Bootstrap's JavaScript bundle including Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <footer class="footer">
+      <div class="container text-center mt-5">
+          <p>&copy; 2023 BRMM. All rights reserved.</p>
+      </div>
+  </footer>
+  </body>
 </html>

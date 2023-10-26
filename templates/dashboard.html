@@ -1,0 +1,73 @@
+{% extends "admin.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+<nav
+  aria-label="breadcrumb"
+  class="mt-5 text-end"
+>
+  <ol class="breadcrumb link-secondary">
+    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+
+    <li
+      class="breadcrumb-item active"
+      aria-current="page"
+    >
+      Dashboard
+    </li>
+  </ol>
+</nav>
+<div class="row g-3 me-3">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Junior Driver List</h5>
+        <p class="card-text">Displaying all the junior drivers.</p>
+        <a
+          href="{{ url_for('listjuniordrivers') }}"
+          class="btn btn-primary"
+          >See More</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Driver Search</h5>
+        <p class="card-text">Searching for drivers by first name or surname.</p>
+        <a
+          href="{{ url_for('searchdrivers') }}"
+          class="btn btn-primary"
+          >Serach Now</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Edit Runs</h5>
+        <p class="card-text">Editting times, cones and WD for a run.</p>
+        <a
+          href="{{ url_for('editruns') }}"
+          class="btn btn-primary"
+          >Edit Now</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Drivers</h5>
+        <p class="card-text">Adding a new driver.</p>
+        <a
+          href="{{ url_for('adddrivers') }}"
+          class="btn btn-primary"
+          >Add Now</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "admin.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+<nav
+  aria-label="breadcrumb"
+  class="mt-5 text-end"
+>
+  <ol class="breadcrumb link-secondary">
+    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+
+    <li
+      class="breadcrumb-item active"
+      aria-current="page"
+    >
+      Junior Driver List
+    </li>
+  </ol>
+</nav>
+<h2 class="mb-4">Junior Driver List</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-borderless table-hover p-4">
+    <tr class="table-primary">
+      <th>Driver</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Caregiver</th>
+      <th>Car Model</th>
+      <th>Drive Class</th>
+    </tr>
+    {% for juniors in juniorList %}
+    <tr>
+      {% for junior in juniors %}
+      <td>{{ junior }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

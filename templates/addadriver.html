@@ -1,0 +1,78 @@
+{% extends "admin.html" %} {% block content %}
+<!-- driver_list is the variable passed in containing the list of drivers -->
+<!-- Add code to display a list of drivers -->
+<nav
+  aria-label="breadcrumb"
+  class="mt-5 text-end"
+>
+  <ol class="breadcrumb link-secondary">
+    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+    <li class="breadcrumb-item">
+      <a href="/admin/adddrivers">Add Drivers</a>
+    </li>
+
+    <li
+      class="breadcrumb-item active"
+      aria-current="page"
+    >
+      Add a Driver
+    </li>
+  </ol>
+</nav>
+<h2 class="mb-4">Add a Driver</h2>
+
+<form
+  action="/admin/adddrivers/addadriver"
+  method="post"
+  class="row g-3 needs-validation"
+>
+  <div class="col-md-6">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="First Name"
+      aria-label="First Name"
+      name="first_name"
+      step="1"
+      required
+    />
+  </div>
+  <div class="col-md-6">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Surname"
+      aria-label="Surname"
+      name="surname"
+      step="1"
+      required
+    />
+  </div>
+
+  <div class="col-md-6">
+    <select
+      class="form-select"
+      name="dr_id"
+    >
+      <option class="form-select">Select a Car Numer</option>
+      {% for car in car_num_list %}
+      <option
+        value="{{ car[0] }}"
+        name="dr_id"
+      >
+        {{ car[0] }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-12">
+    <input
+      type="submit"
+      value="Add"
+      class="btn btn-primary"
+    />
+  </div>
+</form>
+
+{% endblock %}
