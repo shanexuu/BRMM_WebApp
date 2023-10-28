@@ -257,7 +257,7 @@ def dashboard():
 
   return render_template("dashboard.html") 
 
-@app.route("/error")
+@app.route("/admin/error")
 def error():
 
   return render_template("error.html") 
