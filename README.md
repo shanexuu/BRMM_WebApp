@@ -9,12 +9,12 @@
 
 #### 👤 User Roles
 
-This web application assumes the existence of multiple user roles, there are regular users and administrators. Regular users might have access to basic functionality of this web application, which is public to everyone. Administrators have access the editing, searching and creating interfaces. 
+This web application assumes the existence of multiple user roles, there are regular users and administrators. Regular users might have access to the basic functionality of this web application, which is public to everyone. Administrators have access the editing, searching and creating interfaces. 
 
 Consequently, to follow a clear and logical pattern, I decided to separate two distinct routes for those two user roles: a route for regular users (e.g. /listdrivers) and a route for admin users (e.g. /admin/dashboard). Routes were organized hierarchically, admin-related routes were nested under /admin, ensuring a logical and predictable URL structure. 
-I set up nested routes where data had multiple levels of hierarchy. For example, when users check the driver id of 120's run details, the route might be: /listdrivers/rundetails?driver_id=120
+I set up nested routes where data had multiple levels of hierarchy. For example, when users check the driver ID of 120's run details, the route might be: /listdrivers/rundetails?driver_id=120
 
-There are two layout templates: base.html and admin.html. Regular users' templates extend base.html (e.g. driverlist.html extends the base.html). Admin Users' template extends admin.html (e.g. editruns.html extends the admin.html).  In my setup, base.html provides the basic structure for all user's side pages, it includes a banner, admin button, navigation bar and footer. However, the structure and layout of admin.html is different from base.html. I want to keep the layout of admin pages to be clean and easy to navigate, I divided the layout into left and right, left part is the navigation bar, and I set the position to be fixed, even if the page is scrolled, it still stays in the same position. It enherences user experience for admin users, especially when they are handling large data, it saves time without scrolling up and down.
+There are two layout templates: base.html and admin.html. Regular users' templates extend base.html (e.g. driverlist.html extends the base.html). Admin Users' template extends admin.html (e.g. editruns.html extends the admin.html).  In my setup, base.html provides the basic structure for all user's side pages, it includes a banner, admin button, navigation bar and footer. However, the structure and layout of admin.html is different from base.html. I want to keep the layout of admin pages to be clean and easy to navigate, I divided the layout into left and right, left part is the navigation bar, and I set the position to be fixed, even if the page is scrolled, it still stays in the same position. It enhances user experience for admin users, especially when they are handling large data, it saves time without scrolling up and down.
 
 
 #### 📱 Responsive Design Considerations
@@ -27,9 +27,9 @@ I used Bootstrap to implement a responsive web design approach. for example, whe
 
 #### ❌ Error Handling
 
-I assumed that the admin may accidentally insert invalid or incorrect valves to the database, in order to ensure data integrity and accuracy, it's crucial to add error handing to this web app. For handling errors in this project, I considered two aspects: user input validation and Data legitimacy issues. 
+I assumed that the admin may accidentally insert invalid or incorrect valves to the database, in order to ensure data integrity and accuracy, it's crucial to add error handling to this web app. For handling errors in this project, I considered two aspects: user input validation and Data legitimacy issues. 
 
-User input validation: Before updating or inserting data into the database, it's necessary to check data formats and types. For example, in the editing functionality, cones and WD should be digit, in the input field, I add the attribute of "pattern='\d+'", this means that  the input field should only accept numeric digits. If the admin enters anything other than numbers, the form will not be submitted, and the admin will see a validation error message instead.
+User input validation: Before updating or inserting data into the database, it's necessary to check data formats and types. For example, in the editing functionality, cones and WD should be digits, in the input field, I added the attribute of "pattern='\d+'", this means that  the input field should only accept numeric digits. If the admin enters anything other than numbers, the form will not be submitted, and the admin will see a validation error message instead.
 
 
 Data legitimacy issues: although the user input may match the data formats or types, we still need to consider the accuracy of this data before inserting it into the database. So, I set up an error.html template, adding "render_template("error.html", error_message=error_message)" to the python file. For example, in this project, the junior driver's age is between 12 and 25, if the admin's input is either more than 25 or less than 12, the admin will redirect to an error page that displays "Not a junior driver! Please enter the correct junior's birthday!!", and the data will not be allowed insert into the database. 
@@ -67,12 +67,11 @@ CREATE TABLE IF NOT EXISTS car (
 
 #### 5. Suppose logins were implemented. Why is it important for drivers and the club admin to access different routes? As part of your answer, give two specific examples of problems that could occur if all of the web app facilities were available to everyone.
 
-If drivers and admin are sharing the same routes, it means that drivers have the permissions to edit and insert data into the database. There are two main problems may occur: data privacy issues and data accuracy.
+If drivers and admin are sharing the same routes, it means that drivers have permission to edit and insert data into the database. There are two main problems that may occur: data privacy issues and data accuracy issues.
 
-1. Data Privacy: Drivers may access the other driver's sensitive information such as contact details, date of birth, password etc. This might lead to lead to privacy breaches and unsolicited communications.
+Data Privacy: Drivers may access the other driver's sensitive information such as contact details, date of birth, password etc. This might lead to lead to privacy breaches and unsolicited communications.
 
-
-2. Data Accuracy: Drivers can update and insert data into data without authorisation, which may lead to inaccurate records. For example, any driver can edit their run details to improve their good results, which leads to unfair competition. 
+Data Accuracy: Drivers can update and insert data into data without authorisation, which may lead to inaccurate records. For example, any driver can edit their run details to improve their good results, which leads to unfair competition. 
 
 To address these concerns, it's necessary to build different routes for drivers and amin.
 
