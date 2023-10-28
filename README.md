@@ -78,8 +78,12 @@ To address these concerns, it's necessary to build different routes for drivers 
 ## 🌅 Image Sources
 
 banner.jpg: Photo by Kritsada Seekham on Pexels.
+
 driver_list.jpg: Photo by Leif Bergerson on Pexels.
+
 course.jpg: Photo by Hyundai Motor Group on Pexels.
+
 graph.jpg: Photo by Oleksandr P on Pexels.
+
 results.jpg: Photo by Chris Liverani on Unsplash.
 
